@@ -10,7 +10,7 @@ export const UserStorage = ({ children }) => {
     if (username && !data) {
       setData(username);
     }
-  }, []);
+  }, [data]);
 
   return (
     <UseContext.Provider value={{ data, setData }}>

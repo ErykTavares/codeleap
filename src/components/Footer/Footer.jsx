@@ -4,7 +4,7 @@ import { FooterStyled } from './FooterStyled'
 const Footer = () => {
   return (
     <FooterStyled>
-       <a href="https://eryktavares-portifolio.netlify.app/" target="_blank"><h6>copyright ErykTavares © 2022</h6></a>
+       <a href="https://eryktavares-portifolio.netlify.app/" rel="noreferrer" target="_blank"><h6>copyright ErykTavares © 2022</h6></a>
     </FooterStyled>
   )
 }

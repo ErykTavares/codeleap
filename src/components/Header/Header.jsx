@@ -7,7 +7,7 @@ const Header = () => {
   const location = useLocation();
   const {data} = React.useContext(UseContext)
   
-  if (location.pathname != "/signup") {
+  if (location.pathname !== "/signup") {
     return (
       <HeaderStyle>
           <h1>CodeLeap Network</h1>

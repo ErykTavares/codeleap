@@ -10,7 +10,7 @@ export const useFetch = (url, options) => {
       setLoading(true);
       setError(null);
       const res = await fetch(url, options);
-      if(method != "DELETE"){
+      if(method !== "DELETE"){
         const json = await res.json();
         setData(json);
       }
@@ -22,7 +22,7 @@ export const useFetch = (url, options) => {
   }
   React.useEffect(() => {
     response(url, options);
-  }, []);
+  }, [url, options]);
 
   return {
     data,

@@ -43,7 +43,7 @@ const MainScreen = () => {
       posts.response(url, options);
       setLoading(false);
     }
-  }, [loading]);
+  }, [loading, posts, url, options]);
 
   return (
     <MainScreenStyle>
