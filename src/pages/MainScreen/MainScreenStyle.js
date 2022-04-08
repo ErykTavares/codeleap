@@ -8,4 +8,5 @@ export const MainScreenStyle = styled.section`
     justify-content:space-between;
     padding: 0 1rem;
     padding-top:2.1rem;
+
 `

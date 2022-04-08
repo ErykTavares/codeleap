@@ -6,8 +6,17 @@ import TextArea from "../../TextArea/TextArea";
 import { useForm } from "../../../Hooks/useForm";
 import { POSTEDIT_PATCH } from "../../../api";
 import { useFetch } from "../../../Hooks/useFetch";
+import { UseContext } from "../../../UseContext";
 
-const ModalEdit = ({className, method, titlemodal,buttontext, closeModal, postid, setLoading }) => {
+const ModalEdit = ({
+  className,
+  method,
+  titlemodal,
+  buttontext,
+  closeModal,
+  postid,
+  setLoading,
+}) => {
   const titleinput = useForm();
   const content = useForm();
   const [disable, setDisable] = React.useState(false);
@@ -16,6 +25,7 @@ const ModalEdit = ({className, method, titlemodal,buttontext, closeModal, postid
     content: content.value,
   });
   const { response } = useFetch();
+  const {postedit, setPostEdit} = React.useContext(UseContext)  
 
   React.useEffect(() => {
     return titleinput.value.length === 0 || content.value.length === 0
@@ -23,19 +33,26 @@ const ModalEdit = ({className, method, titlemodal,buttontext, closeModal, postid
       : setDisable(false);
   }, [titleinput, content]);
 
+  React.useEffect(() => {
+    titleinput.setValue(postedit.title);
+    content.setValue(postedit.content);
+  }, []);
+
   async function handleSubmit(event) {
     event.preventDefault();
     await response(url, options);
     closeModal(true);
     setLoading(true);
+    titleinput.setValue("");
+    content.setValue("")
   }
 
   return (
-    <ModalEditStyle 
+    <ModalEditStyle
       className={className}
       method={method}
       onSubmit={(event) => handleSubmit(event)}
-      onKeyDown={(event) => event.key === "Escape"? closeModal(event) : null}
+      onKeyDown={(event) => (event.key === "Escape" ? closeModal(event) : null)}
     >
       <div className="title">
         <h2>{titlemodal}</h2>

@@ -18,7 +18,7 @@ const Post = ({
   postdelete,
   setPostDelete,
 }) => {
-  const username = React.useContext(UseContext).data;
+  const {data, setPostEdit} = React.useContext(UseContext);
 
   function isEdit() {
     if (edit) {
@@ -26,6 +26,7 @@ const Post = ({
     } else if (!edit) {
       setPostID(id);
       setEdit(true);
+      setPostEdit({title : title, content : text})
     }
   }
 
@@ -49,7 +50,7 @@ const Post = ({
     <PostStyles>
       <header>
         <h2>{title}</h2>
-        {author === username && (
+        {author === data && (
           <ul>
             <li className="trash">
               <Button

@@ -4,6 +4,7 @@ export const UseContext = React.createContext();
 
 export const UserStorage = ({ children }) => {
   const [data, setData] = React.useState("");
+  const [postedit, setPostEdit] = React.useState({})
 
   React.useEffect(() => {
     const username = window.localStorage.getItem("username");
@@ -13,7 +14,7 @@ export const UserStorage = ({ children }) => {
   }, [data]);
 
   return (
-    <UseContext.Provider value={{ data, setData }}>
+    <UseContext.Provider value={{data, setData, postedit, setPostEdit }}>
       {children}
     </UseContext.Provider>
   );
