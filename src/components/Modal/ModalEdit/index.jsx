@@ -36,7 +36,7 @@ const ModalEdit = ({
   React.useEffect(() => {
     titleinput.setValue(postedit.title);
     content.setValue(postedit.content);
-  },[]);
+  });
 
   async function handleSubmit(event) {
     event.preventDefault();
